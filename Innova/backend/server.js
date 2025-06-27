@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+const mongoose = require('mongoose')
+
 const jwt = require('jsonwebtoken')
 
 const app = express()
@@ -22,7 +24,6 @@ app.get("/posts", authenticateToken, (req, res) => {
     res.json(posts.filter(post => post.username === req.user.name))
 })
 
-
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
@@ -36,5 +37,15 @@ function authenticateToken(req, res, next) {
     })  
 }
 
-app.listen(3000)
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('Connected to Database'))
+
+app.use(express.json())
+
+const subscribersRouter = require('./routes/subscribers')
+app.use('/subscribers', subscribersRouter)
+
+app.listen(3000, () => console.log('Server Started'))
 
