@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 
-const subscriberSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
   subscribedToChannel: {
     type: String,
-    required: true
+    required: true  
   },
   subscribeDate: {
     type: Date,
@@ -16,4 +16,6 @@ const subscriberSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Subscriber', subscriberSchema)
+module.exports = mongoose.model('User', userSchema)
+
+// gonna change it later 
