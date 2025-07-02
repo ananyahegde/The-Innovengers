@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const UserModel = require('../models/user') // renamed to UserModel
+const UserModel = require('../models/user.model') // renamed to UserModel
 
 // Get all users
 router.get('/', async (req, res) => {
@@ -20,8 +20,14 @@ router.get('/:id', getUser, (req, res) => {
 // Create a new user
 router.post('/', async (req, res) => {
   const user = new UserModel({
-    name: req.body.name,
-    subscribedToChannel: req.body.subscribedToChannel
+    fname: req.body.fname,
+    lname: req.body.lname,
+    email: req.body.email,
+    country: req.body.country,
+    city: req.body.city,
+    address: req.body.address,
+    phoneNumber: req.body.phoneNumber,
+    credentialId: req.body.credentialId,
   })
   try {
     const newUser = await user.save()
