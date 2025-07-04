@@ -67,7 +67,7 @@ PATCH http://localhost:3000/users/6863f3b7d885393fcfdaa28f
 Content-Type: application/json
 
 {
-  "city": "Osaka"
+  "fname": "Arav"
 }
 
 ###
@@ -111,7 +111,7 @@ PATCH http://localhost:3000/products/6863f2043625a0ad97790fd9
 Content-Type: application/json
 
 {
-  "stock": 80
+  "price": 80
 }
 
 ###
@@ -138,7 +138,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/orders/6863f1d83625a0ad97790fcf
+PATCH http://localhost:3000/orders/6863f2463625a0ad97790fe8
 Content-Type: application/json
 
 {
@@ -148,3 +148,63 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/orders/6863f1d83625a0ad97790fcf
+
+
+### Consents
+
+POST http://localhost:3000/consents
+Content-Type: application/json
+
+{
+  "user": "6863f3b7d885393fcfdaa28f",
+  "purpose": "analytics",
+  "granted": true
+}
+
+### 
+
+GET http://localhost:3000/consents
+
+### 
+
+PATCH http://localhost:3000/consents/686626cfa4f0a116b43de625
+Content-Type: application/json
+
+{
+  "granted": false
+}
+
+### 
+
+DELETE http://localhost:3000/consents/CONSENT_ID
+
+
+### Log
+
+POST http://localhost:3000/logs
+Content-Type: application/json
+
+{
+  "user": "686626cfa4f0a116b43de625",
+  "action": "viewed_product",
+  "dataType": "product_interaction",
+  "purpose": "analytics",
+  "accessedBy": "internal_recommender"
+}
+
+### 
+
+GET http://localhost:3000/logs
+
+### 
+
+PATCH http://localhost:3000/logs/LOG_ID
+Content-Type: application/json
+
+{
+  "purpose": "personalization"
+}
+
+### 
+
+DELETE http://localhost:3000/logs/LOG_ID
