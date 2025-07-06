@@ -69,4 +69,6 @@ Go to `localhost:3000` in your browser.
   - Access Logs (who accessed data and when)
 - Real-time Data Usage chart (via Chart.js)
 
+## The project is deployed using mongodb atlas and render
+
 
