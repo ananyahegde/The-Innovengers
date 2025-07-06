@@ -52,13 +52,19 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "fname": "Ayla",
-  "lname": "Sky",
-  "email": "ayla@example.com",
-  "country": "Japan",
-  "city": "Tokyo",
-  "address": "123 Sakura St",
-  "phoneNumber": "1234567890"
+  "name": "John",
+  "email": "john@example.com",
+  "password": "securePassword"
+}
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "name": "John",
+  "password": "securePassword"
 }
 
 ###
@@ -74,21 +80,6 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/users/6863f0ea3625a0ad97790fc4
 
----
-
-### CREDENTIALS
-
-GET http://localhost:3000/credentials/
-
-###
-
-POST http://localhost:3000/credentials
-Content-Type: application/json
-
-{
-  "userId": "6863f3b7d885393fcfdaa28f",
-  "password": "user123"
-}
 
 ### PRODUCTS
 
@@ -130,10 +121,10 @@ POST http://localhost:3000/orders
 Content-Type: application/json
 
 {
-  "user": "64a1c7c9e437de27b68d9a50",
-  "products": ["6863f2043625a0ad97790fd9"],
-  "amount": 49.99,
-  "paymentMode": "Credit Card"
+ "userId": "507f1f77bcf86cd799439011",
+ "orderRef": "ORD-1735584123456-123",
+ "productId": "507f1f77bcf86cd799439012",
+ "amount": 1500
 }
 
 ###
@@ -194,7 +185,7 @@ Content-Type: application/json
 
 ### 
 
-GET http://localhost:3000/logs
+GET http://localhost:3000/logs/
 
 ### 
 

@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  fname: { type: String, required: true },
-  lname: { type: String, required: true },
+  name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  country: { type: String, required: true },
-  city: { type: String, required: true },
-  address: { type: String, required: true },
-  phoneNumber: { type: String, required: true },
-  credentialId: { type: mongoose.Schema.Types.ObjectId, ref: 'Credential' }
+  password: { type: String, required: true }
 });
 
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
 module.exports = mongoose.model('User', userSchema);

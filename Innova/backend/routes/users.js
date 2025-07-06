@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcrypt')
 const router = express.Router()
 const UserModel = require('../models/user.model') // renamed to UserModel
 
@@ -18,16 +19,11 @@ router.get('/:id', getUser, (req, res) => {
 })
 
 // Create a new user
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) => {  
   const user = new UserModel({
-    fname: req.body.fname,
-    lname: req.body.lname,
+    name: req.body.name,
     email: req.body.email,
-    country: req.body.country,
-    city: req.body.city,
-    address: req.body.address,
-    phoneNumber: req.body.phoneNumber,
-    credentialId: req.body.credentialId,
+    password: req.body.password,
   })
   try {
     const newUser = await user.save()
@@ -78,5 +74,29 @@ async function getUser(req, res, next) {
   res.user = user
   next()
 }
+
+router.post('/login', async (req, res) => {
+  try {
+    const { name, password } = req.body;
+    
+    const user = await UserModel.findOne({ name });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+    
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+    
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 module.exports = router

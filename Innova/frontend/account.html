@@ -1,274 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EleganceWear | Account</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffafc;
+      color: #333;
+    }
 
- 	<head>
- 		<!-- Meta Tags -->
-		<meta charset="UTF-8">
-		<meta name="author" content="Kamran Mubarik">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Title -->
- 		<title>E-Commerce Online Shop</title>
- 		<!-- Style Sheet -->
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<!-- Javascript -->	
-		<script type="text/javascript" src="js/jquery.min.js"></script>
- 	</head>
+    header {
+      background: white;
+      border-bottom: 1px solid #eee;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .brand-logo .elegance { color: #d946ef; }
+    .brand-logo .wear { color: #e11d48; }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      text-decoration: none;
+      color: #444;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tab:hover {
+      background-color: #ffe4f0;
+      color: #e11d48;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #fff0f5;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .account-section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+        input {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 1rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 1rem;
+      background-color: #e11d48;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+
+    .btn:hover {
+      background-color: #be123c;
+    }
+
+    .logout-btn {
+      background-color: #888;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .toggle-link a {
+      color: #e11d48;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+
+    #reauth-password::placeholder {
+      color: white;
+    }
+  </style>
+</head>
 <body>
+  <header>
+    <div class="brand-logo">
+      <span class="elegance">✨ Elegance</span><span class="wear">Wear</span>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab"><i data-feather="home"></i> Home</a>
+      <a href="products.html" class="nav-tab"><i data-feather="shopping-bag"></i> Shop</a>
+      <a href="cart.html" class="nav-tab"><i data-feather="shopping-cart"></i> Cart</a>
+      <a href="account.html" class="nav-tab"><i data-feather="user"></i> Account</a>
+    </nav>
+  </header>
 
-	<header>
-		<div class="container">
-			<div class="brand">
-				<div class="logo">
-					<a href="index.html">
-						<img src="img/icons/online_shopping.png">
-						<div class="logo-text">
-							<p class="big-logo">Ecommerce</p>
-							<p class="small-logo">online shop</p>
-						</div>
-					</a>
-				</div> <!-- logo -->
-				<div class="shop-icon">
-					<div class="dropdown">
-						<img src="img/icons/account.png">
-						<div class="dropdown-menu">
-							<ul>
-								<li><a href="account.html">My Account</a></li>
-								<li><a href="orders.html">My Orders</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="img/icons/heart.png">
-						<div class="dropdown-menu wishlist-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="img/product/img1.jpg"></td>
-										<td>product name</td>
-									</tr>
-									<tr>
-										<td><img src="img/product/img2.jpg"></td>
-										<td>product name</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="img/icons/shopping_cart.png">
-						<div class="dropdown-menu cart-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-										<th class="center">Price</th>
-										<th class="center">Qty.</th>
-										<th class="center">Amount</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="img/product/img1.jpg"></td>
-										<td>product name</td>
-										<td class="center">1200</td>
-										<td class="center">2</td>
-										<td class="center">2400</td>
-									</tr>
-									<tr>
-										<td><img src="img/product/img2.jpg"></td>
-										<td>product name</td>
-										<td class="center">1500</td>
-										<td class="center">2</td>
-										<td class="center">3000</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div> <!-- shop icons -->
-			</div> <!-- brand -->
+  <main>
+    <section class="account-section" id="auth-section">
+      <!-- Content added via JavaScript -->
+    </section>
+  </main>
 
-			<div class="menu-bar">
-				<div class="menu">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-				<div class="search-bar">
-					<form>
-						<div class="form-group">
-							<input type="text" class="form-control" name="search" placeholder="Search">
-							<img src="img/icons/search.png">
-						</div>
-					</form>
-				</div>
-			</div> <!-- menu -->
-		</div> <!-- container -->
-	</header> <!-- header -->
+  <footer>
+    <p>&copy; 2025 EleganceWear. All rights reserved.</p>
+  </footer>
 
-	<div class="container">
-		<main>
-			<div class="breadcrumb">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li> / </li>
-					<li>Account</li>
-				</ul>
-			</div> <!-- End of Breadcrumb-->
-			
-			<div class="account-page">
-				<div class="profile">
-					<div class="profile-img">
-						<img src="img/product/img5.jpg">
-						<h2>John Doe</h2>
-						<p>john_doe@mail.com</p>
-					</div>
-					<ul>
-						<li><a href="account.html" class="active">Account <span>></span></a></li>
-						<li><a href="orders.html">My Orders <span>></span></a></li>
-						<li><a href="change-password.html">Change Password <span>></span></a></li>
-						<li><a href="">Logout <span>></span></a></li>
-					</ul>
-				</div>
-				<div class="account-detail">
-					<h2>Account</h2>
-					<div class="billing-detail">					
-						<form class="checkout-form">
-							<div class="form-inline">
-								<div class="form-group">
-									<label>First Name</label>
-									<input type="text" id="fname" name="fname" value="John">
-								</div>
-								<div class="form-group">
-									<label>Last Name</label>
-									<input type="text" id="lname" name="lname" value="Doe">
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Company Name (Optional)</label>
-								<input type="text" id="cname" name="cname">
-							</div>
-							<div class="form-inline">
-								<div class="form-group">
-									<label>Country</label>
-									<select id="country" name="country">
-										<option selected>---Select a Country---</option>
-										<option value="pakistan">Pakistan</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label>City</label>
-									<select id="city" name="city">
-										<option selected>---Select a City---</option>
-										<option value="karachi">Karachi</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Address</label>
-								<textarea style="resize:none" id="address" name="address" rows="3">xyz area, street 24 </textarea>
-							</div>
-							<div class="form-inline">					
-								<div class="form-group">
-									<label>Tel</label>
-									<input type="text" id="tel" name="tel" minlength="11" maxlength="11" value="555-XXXXXXX">
-								</div>
-								<div class="form-group">
-									<label>Mobile</label>
-									<input type="text" id="mobile" name="mobile" minlength="11" maxlength="11" value="555-XXXXXXX">
-								</div>
-							</div>
-							<div class="form-group">
-								<label></label>
-								<input type="submit" id="update" name="update" value="Update">
-							</div>
-						</form>		
-					</div>
-				</div>				
-			</div>		
-		</main> <!-- Main Area -->
-	</div>
+  <script>
+    const API_BASE_URL = 'http://localhost:3000';
 
-	<footer>
-		<div class="container">
-			<div class="footer-widget">
-				<div class="widget">
-					<div class="widget-heading">
-						<h3>Important Link</h3>
-					</div>
-					<div class="widget-content">
-						<ul>
-							<li><a href="about.html">About</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="refund.html">Refund Policy</a></li>
-							<li><a href="terms.html">Terms & Conditions</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="widget">
-					<div class="widget-heading">
-						<h3>Information</h3>
-					</div>
-					<div class="widget-content">
-						<ul>
-							<li><a href="account.html">My Account</a></li>
-							<li><a href="orders.html">My Orders</a></li>
-							<li><a href="cart.html">Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="widget">
-					<div class="widget-heading">
-						<h3>Follow us</h3>
-					</div>
-					<div class="widget-content">
-						<div class="follow">
-							<ul>
-								<li><a href="#"><img src="img/icons/facebook.png"></a></li>
-								<li><a href="#"><img src="img/icons/twitter.png"></a></li>
-								<li><a href="#"><img src="img/icons/instagram.png"></a></li>
-							</ul>
-						</div>						
-					</div>
-					<div class="widget-heading">
-						<h3>Subscribe for Newsletter</h3>
-					</div>
-					<div class="widget-content">
-						<div class="subscribe">
-							<form>
-								<div class="form-group">
-									<input type="text" class="form-control" name="subscribe" placeholder="Email">
-									<img src="img/icons/paper_plane.png">
-								</div>
-							</form>
-						</div>						
-					</div>
-				</div>
-			</div> <!-- Footer Widget -->
-			<div class="footer-bar">
-				<div class="copyright-text">
-					<p>Copyright 2021 - All Rights Reserved</p>
-				</div>
-				<div class="payment-mode">
-					<img src="img/icons/paper_money.png">
-					<img src="img/icons/visa.png">
-					<img src="img/icons/mastercard.png">
-				</div>
-			</div> <!-- Footer Bar -->
-		</div>
-	</footer> <!-- Footer Area -->
+    feather.replace();
 
+    const authSection = document.getElementById("auth-section");
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!currentUser) {
+      showAuthForm("login");
+    } else {
+      showAccountDetails();
+    }
+
+    function showAuthForm(mode) {
+      const isLogin = mode === "login";
+      authSection.innerHTML = `
+        <h2>${isLogin ? "Login to Your Account" : "Create an Account"}</h2>
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        ${!isLogin ? '<input type="email" id="email" placeholder="Email" required />' : ""}
+        <button class="btn" onclick="${isLogin ? "loginUser()" : "signupUser()"}">
+          ${isLogin ? "Login" : "Sign Up"}
+        </button>
+        <div class="toggle-link">
+          ${isLogin 
+            ? `Don't have an account? <a href="#" onclick="showAuthForm('signup')">Sign Up</a>` 
+            : `Already have an account? <a href="#" onclick="showAuthForm('login')">Login</a>`}
+        </div>
+      `;
+    }
+
+    async function loginUser() {
+      const name = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+      const response = await fetch(`${API_BASE_URL}/users/login`, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name, 
+          password: password
+        })
+      });
+
+      const data = await response.json(); 
+
+      if (response.ok) {
+        const userInfo = {
+          id: data._id,
+          name: data.name,
+          email: data.email
+        };
+        localStorage.setItem("currentUser", JSON.stringify(userInfo));
+        alert("Login successful!");
+        location.reload();
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert("Error logging in. Please try again.");
+    }
+  }
+
+    async function signupUser() {
+      const name = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!name || !email || !password) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      try {
+      const response = await fetch(`${API_BASE_URL}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const userInfo = {
+          id: data._id,
+          name: data.name,
+          email: data.email
+        };
+        localStorage.setItem("currentUser", JSON.stringify(userInfo));
+        alert("Account created successfully!");
+        location.reload();
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert("Error creating account. Please try again.");
+    }
+  }
+      
+
+    function showAccountDetails() {
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+      authSection.innerHTML = `
+        <h2>Welcome, ${user.name}</h2>
+        <button class="btn" onclick="confirmOrder()">Place Order</button>
+        <button class="btn" onclick="goToDashboard()">Go to my dashboard</button>
+        <button class="btn logout-btn" onclick="logout()">Log Out</button>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      location.reload();
+    }
+
+    function confirmOrder() {
+      alert("Thank you for your purchase!");
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    }
+
+    function goToDashboard() {
+      showReAuthModal();
+    }
+
+    function showReAuthModal() {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      
+      // Create modal overlay
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5); display: flex; justify-content: center;
+        align-items: center; z-index: 1000;
+      `;
+      
+      modal.innerHTML = `
+      <div style="background: #4a1c2e; padding: 20px; border-radius: 8px; max-width: 300px; border: 2px solid #c53e3e; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        <h3 style="color: white; margin-top: 0; text-align: center;">Confirm Your Identity</h3>
+        <p style="color: white; text-align: center; margin-bottom: 20px;">Please enter your password to access the dashboard</p>
+        <input type="password" id="reauth-password" placeholder="Enter your password" style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #c53e3e; border-radius: 4px; background: #2d1318; color: white; box-sizing: border-box;">
+        <button onclick="verifyPasswordAndRedirect()" style="width: 100%; padding: 12px; background: #c53e3e; color: white; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; margin-bottom: 8px;">Verify</button>
+        <button onclick="closeReAuthModal()" style="width: 100%; padding: 12px; background: #6c757d; color: white; border: none; cursor: pointer; border-radius: 4px;">Cancel</button>
+      </div>
+    `;
+      
+      document.body.appendChild(modal);
+      modal.id = 'reauth-modal';
+    }
+
+    async function verifyPasswordAndRedirect() {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      const password = document.getElementById("reauth-password").value;
+      
+      if (!password) {
+        alert("Please enter your password.");
+        return;
+      }
+      
+      try {
+        const response = await fetch(`${API_BASE_URL}/users/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: currentUser.name,
+            password: password
+          })
+        });
+        
+        if (response.ok) {
+          closeReAuthModal();
+          window.location.href = 'dashboard.html';
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      } catch (error) {
+        console.error('Re-auth error:', error);
+        alert("Error verifying password. Please try again.");
+      }
+    }
+
+    function closeReAuthModal() {
+      const modal = document.getElementById('reauth-modal');
+      if (modal) {
+        modal.remove();
+      }
+    }  
+</script>
 </body>
-
 </html>

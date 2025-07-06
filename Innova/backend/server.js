@@ -1,23 +1,22 @@
 require('dotenv').config()
 
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const cors = require('cors');
 
 const app = express()
 
-app.use(express.json())
+app.use(cors()); 
 
-const posts = [
-    {
-        username: 'Olivia',
-        title: 'post 1'
-    },
-    {
-        username: 'Jim',
-        title: 'post 2'
-    }
-]
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'))
+});
+
 app.get("/posts", authenticateToken, (req, res) => {
     
     res.json(posts.filter(post => post.username === req.user.name))
@@ -46,14 +45,12 @@ app.use(express.json())
 const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const ordersRouter = require('./routes/orders')
-const credentialsRouter = require('./routes/credentials')
 const consentsRouter = require('./routes/consents')
 const logsRouter = require('./routes/logs')
 
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
 app.use('/orders', ordersRouter)
-app.use('/credentials', credentialsRouter)
 app.use('/consents', consentsRouter)
 app.use('/logs', logsRouter)
 

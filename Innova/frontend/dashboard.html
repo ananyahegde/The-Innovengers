@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EleganceWear | Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<style>
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fce7f3; /* light pink */
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #ec4899; /* pink-500 */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(16px);
+  }
+
+  .brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .brand-logo .elegance {
+    color: #d946ef;
+  }
+
+  .brand-logo .wear {
+    color: #e11d48;
+  }
+
+.bg-white.shadow-md,
+.bg-white.rounded-lg,
+.bg-white.shadow {
+  background-color: #ffe6ec !important; 
+}
+
+
+    .hover\:bg-pink-700:hover {
+    background-color: #be185d !important;
+  }
+</style>
+
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto p-4 text-center">
+    <div class="brand-logo">
+      <span class="elegance">✨ Elegance</span><span class="wear">Wear</span>
+    </div>
+    <nav class="flex justify-center gap-6 mt-2 flex-wrap">
+      <a href="index.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="home"></i> Home</a>
+      <a href="products.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="shopping-bag"></i> Shop</a>
+      <a href="cart.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="shopping-cart"></i> Cart</a>
+      <a href="account.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="user"></i> Account</a>
+    </nav>
+  </div>
+</header>
+
+
+  <div class="max-w-7xl mx-auto relative p-6">
+    <!-- Reward Icon -->
+    <div class="absolute top-0 right-0 mt-2 mr-2">
+      <button title="Reward Points">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" />
+        </svg>
+      </button>
+    </div>
+
+    <h1 class="text-3xl font-bold mb-6 text-center">Data Privacy & Transparency Dashboard</h1>
+
+    <!-- Row 1: Chart & Consent -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <!-- Chart -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-semibold">Real-Time Data Usage</h2>
+          <a href="#" class="text-sm text-blue-600">Learn more</a>
+        </div>
+        <canvas id="usageChart"></canvas>
+      </div>
+
+      <!-- Consent -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-semibold">Consent Settings</h2>
+          <a href="#" class="text-sm text-blue-600">Learn more</a>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span>Email Tracking</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="email_tracking" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="flex items-center justify-between">
+            <span>Location Data</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="location_data">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="flex items-center justify-between">
+            <span>Device Info</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="device_info" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Purpose & Access Logs -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <!-- Purpose -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-semibold">Purpose Limitation</h2>
+          <a href="#" class="text-sm text-blue-600">Learn more</a>
+        </div>
+        <div>
+          <label class="block mb-2">
+            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="targeted_ads" checked>Targeted Ads
+          </label>
+          <label class="block mb-2">
+            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="product_suggestions">Product Suggestions
+          </label>
+          <label class="block mb-2">
+            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="service_improvements">Service Improvements
+          </label>
+          <label class="block mb-2">
+            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="email_updates" checked>Email Updates
+          </label>
+        </div>
+      </div>
+
+      <!-- Access Logs -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div id="logs-container"></div>
+      </div>
+
+    <!-- Save Button -->
+    <div class="text-center mt-6" style="padding-left: 570px">
+      <button id="save-btn" type="button" class="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700">Save </button>
+    </div>
+  </div>
+
+<script>
+
+feather.replace();
+
+// Get current user from localStorage
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const USER_ID = currentUser?.id;
+const BASE_URL = "http://localhost:3000";
+
+// All purpose types from your Mongoose schema
+const ALL_PURPOSES = [
+  'email_tracking',
+  'location_data', 
+  'device_info',
+  'targeted_ads',
+  'product_suggestions',
+  'service_improvements',
+  'email_updates'
+];
+
+// Chart initialization - now dynamic
+let usageChart;
+
+// Initialize chart with dynamic data
+async function initializeChart() {
+  try {
+    const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
+    if (res.ok) {
+      const logs = await res.json();
+      
+      // Process logs to count events per day
+      const logCounts = processLogsForChart(logs);
+      
+      const ctx = document.getElementById('usageChart').getContext('2d');
+      usageChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: logCounts.labels,
+          datasets: [{
+            label: 'Data Events',
+            data: logCounts.data,
+            backgroundColor: 'rgba(236, 72, 153, 0.15)',  
+            borderColor: '#ec4899',                      
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' }
+          },
+          scales: {
+            y: { 
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Error initializing chart:", err);
+    // Fallback to hardcoded data if API fails
+    initializeFallbackChart();
+  }
+}
+
+// Process logs to count events per day
+function processLogsForChart(logs) {
+  // Create a map to count logs per day
+  const dailyCounts = new Map();
+  
+  logs.forEach(log => {
+    const date = new Date(log.timestamp);
+    const dateKey = date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+    
+    dailyCounts.set(dateKey, (dailyCounts.get(dateKey) || 0) + 1);
+  });
+  
+  // Get last 7 days or available data
+  const today = new Date();
+  const labels = [];
+  const data = [];
+  
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const dateKey = date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+    
+    labels.push(dateKey);
+    data.push(dailyCounts.get(dateKey) || 0);
+  }
+  
+  return { labels, data };
+}
+
+// Fallback chart with hardcoded data
+function initializeFallbackChart() {
+  const ctx = document.getElementById('usageChart').getContext('2d');
+  usageChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['June 24', 'June 25', 'June 26', 'June 27', 'June 28'],
+      datasets: [{
+        label: 'Data Events',
+        data: [3, 5, 4, 6, 8],
+        backgroundColor: 'rgba(236, 72, 153, 0.15)',  
+        borderColor: '#ec4899',                      
+        borderWidth: 2,
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top' }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+}
+
+// Update chart when new data is available
+async function updateChart() {
+  if (usageChart) {
+    try {
+      const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
+      if (res.ok) {
+        const logs = await res.json();
+        const logCounts = processLogsForChart(logs);
+        
+        usageChart.data.labels = logCounts.labels;
+        usageChart.data.datasets[0].data = logCounts.data;
+        usageChart.update();
+      }
+    } catch (err) {
+      console.error("Error updating chart:", err);
+    }
+  }
+}
+
+// Fetch LATEST consent by timestamp
+async function fetchConsents() {
+  try {
+    const res = await fetch(`${BASE_URL}/consents/${USER_ID}`);
+    
+    if (res.ok) {
+      const data = await res.json();
+      const userConsents = data.consents || [];
+      
+      // Update UI with LATEST consents
+      ALL_PURPOSES.forEach(purpose => {
+        const toggle = document.querySelector(`[data-purpose="${purpose}"]`);
+        if (toggle) {
+          const existing = userConsents.find(c => c.purpose === purpose);
+          toggle.checked = existing ? existing.granted : false;
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Fetch error:", err);
+  }
+}
+
+// Save all preferences to MongoDB
+async function savePreferences() {
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.classList.add('loading');
+  saveBtn.textContent = 'Saving...';
+
+  try {
+    // Collect all current toggle states
+    const consents = [];
+    ALL_PURPOSES.forEach(purpose => {
+      const toggle = document.querySelector(`[data-purpose="${purpose}"]`);
+      if (toggle) {
+        consents.push({
+          purpose: purpose,
+          granted: toggle.checked
+        });
+      }
+    });
+
+    // Always use POST - let backend handle upsert
+    const createRes = await fetch(`${BASE_URL}/consents`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: USER_ID,
+        consents: consents
+      })
+    });
+    
+    if (createRes.ok) {
+      alert("Preferences saved successfully!");
+      // Reload latest consents after save
+      await fetchConsents();
+    } else {
+      throw new Error(`Save failed: ${createRes.statusText}`);
+    }
+    
+  } catch (err) {
+    console.error("Save error:", err);
+    alert("Failed to save preferences. Please try again.");
+  } finally {
+    saveBtn.classList.remove('loading');
+    saveBtn.textContent = 'Save Preferences';
+  }
+}
+
+// Load LATEST access logs by timestamp
+async function fetchLogs() {
+  try {
+    const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
+    if (res.ok) {
+      const logs = await res.json();
+      const container = document.getElementById('logs-container');
+      container.innerHTML = '';
+
+      // Sort logs by timestamp descending (latest first)
+      logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      const div = document.createElement('div');
+      div.className = 'p-2 text-sm';
+      div.innerHTML = `
+        <div class="bg-[#e5ccc9] rounded-lg p-4 shadow">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-black text-lg font-semibold">Access Logs</h2>
+            <a href="#" class="text-blue-600 hover:text-blue-500 text-sm">Learn more</a>
+          </div>
+
+          <table class="w-full text-md text-left text-gray-800">
+            <thead class="text-md text-black-600 uppercase bg-[#e5ccc9]">
+              <tr>
+                <th scope="col" class="py-3 px-4">Action</th>
+                <th scope="col" class="py-3 px-4">Accessed By</th>
+                <th scope="col" class="py-3 px-4">Date & Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${logs.slice(0, 3).map(log => `
+                <tr class="hover:bg-[#e5ccc9]">
+                  <td class="py-3 px-4">${log.action}</td>
+                  <td class="py-3 px-4">${log.accessedBy}</td>
+                  <td class="py-3 px-4">${new Date(log.timestamp).toLocaleString()}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+
+          <div class="mt-4 text-center">
+            <button class="text-black-600 hover:text-black-800 text-md">See More</button>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(div);
+
+      // Update chart with new log data
+      await updateChart();
+    }
+  } catch (err) {
+    console.error("Error fetching logs:", err);
+  }
+}
+
+// Event listeners
+document.getElementById('save-btn').addEventListener('click', savePreferences);
+
+// Load latest data on page load AND on every reload
+window.addEventListener('DOMContentLoaded', () => {
+  fetchConsents();
+  fetchLogs();
+  initializeChart(); // Initialize chart on page load
+});
+
+// Also reload on page focus (when switching back to tab)
+window.addEventListener('focus', () => {
+  fetchConsents();
+  fetchLogs(); // This will also update the chart
+});
+
+</script>
+</body>
+</html>
