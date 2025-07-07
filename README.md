@@ -1,8 +1,8 @@
 
 # The Innovengers – EleganceWear Privacy Dashboard
 
-This repository contains the full-stack web application for **EleganceWear**, an e-commerce platform enhanced with a **Data Privacy & Transparency Dashboard**. This dashboard empowers users to control how their personal data is used while shopping online. The project is deployed using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for the database and [Render](https://render.com/) for hosting both the frontend and backend. <br> <br>
-[visit website](https://the-innovengers-frontend.onrender.com/)
+This repository contains the full-stack web application for **EleganceWear**, an e-commerce platform enhanced with a **Data Privacy & Transparency Dashboard**. This dashboard empowers users to control how their personal data is used while shopping online. The project is deployed using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for the database and [Render](https://render.com/) for hosting both the frontend and backend. <br>
+[visit website](https://the-innovengers-frontend.onrender.com/) <br> 
 
 ## 🚀 Setup Instructions
 
