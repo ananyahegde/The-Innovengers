@@ -69,4 +69,12 @@ Go to `localhost:3000` in your browser.
   - Purpose Limitation (ads, personalization)
   - Access Logs (who accessed data and when)
 - Real-time Data Usage chart (via Chart.js)
-  
+
+## 📄 License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 🤝 Contributions
+
+PRs and suggestions are welcome.
+
