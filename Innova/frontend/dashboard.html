@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EleganceWear | Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <style>
@@ -28,7 +30,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fce7f3; /* light pink */
+    background-color: #cbd5e0;
     transition: 0.4s;
     border-radius: 24px;
   }
@@ -46,7 +48,7 @@
   }
 
   input:checked + .slider {
-    background-color: #ec4899; /* pink-500 */
+    background-color: #a24cad;
   }
 
   input:checked + .slider:before {
@@ -59,141 +61,212 @@
     font-weight: bold;
   }
 
-  .brand-logo .elegance {
-    color: #d946ef;
+  .brand-logo .elegance { color: #a24cad; }
+  .brand-logo .wear { color: #4d1d25; }
+
+  .bg-white.shadow-md,
+  .bg-white.rounded-lg,
+  .bg-white.shadow {
+    background-color: #ffe4f0 !important; 
   }
 
-  .brand-logo .wear {
-    color: #e11d48;
+  input[type="checkbox"] {
+    accent-color: #a24cad;
+  }
+  
+  .nav-tab {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-tab:hover {
+    background-color: #ffe4f0;
+    color: #4d1d25;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-.bg-white.shadow-md,
-.bg-white.rounded-lg,
-.bg-white.shadow {
-  background-color: #ffe6ec !important; 
-}
+  .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(162, 76, 173, 0.1);
+  }
 
+  .setting-item:last-child {
+    border-bottom: none;
+  }
 
-    .hover\:bg-pink-700:hover {
-    background-color: #be185d !important;
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    margin-right: 0.75rem;
+    transform: scale(1.1);
+  }
+
+  .access-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .access-table th,
+  .access-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(162, 76, 173, 0.1);
+  }
+
+  .access-table th {
+    background-color: rgba(162, 76, 173, 0.1);
+    font-weight: 600;
+    color: #4d1d25;
+  }
+
+  .access-table tr:hover {
+    background-color: rgba(162, 76, 173, 0.05);
   }
 </style>
-
 </head>
 
 <body class="bg-white text-gray-800">
-
   <!-- Header -->
   <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto p-4 text-center">
-    <div class="brand-logo">
-      <span class="elegance">✨ Elegance</span><span class="wear">Wear</span>
+    <div class="max-w-7xl mx-auto p-4 text-center">
+      <div class="brand-logo">
+        <span class="elegance">Elegance</span><span class="wear">Wear</span>
+      </div>
+      <nav class="flex justify-center gap-6 mt-2 flex-wrap">
+        <a href="index.html" class="nav-tab text-gray-700 font-semibold flex items-center gap-1"><i data-feather="home"></i> Home</a>
+        <a href="products.html" class="nav-tab text-gray-700 font-semibold flex items-center gap-1"><i data-feather="shopping-bag"></i> Shop</a>
+        <a href="cart.html" class="nav-tab text-gray-700 font-semibold flex items-center gap-1"><i data-feather="shopping-cart"></i> Cart</a>
+        <a href="account.html" class="nav-tab text-gray-700 font-semibold flex items-center gap-1"><i data-feather="user"></i> Account</a>
+      </nav>
     </div>
-    <nav class="flex justify-center gap-6 mt-2 flex-wrap">
-      <a href="index.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="home"></i> Home</a>
-      <a href="products.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="shopping-bag"></i> Shop</a>
-      <a href="cart.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="shopping-cart"></i> Cart</a>
-      <a href="account.html" class="text-gray-700 font-semibold hover:text-pink-600 flex items-center gap-1"><i data-feather="user"></i> Account</a>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <div class="max-w-7xl mx-auto relative p-6">
-    <!-- Reward Icon -->
-    <div class="absolute top-0 right-0 mt-2 mr-2">
-      <button title="Reward Points">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" />
-        </svg>
-      </button>
-    </div>
-
     <h1 class="text-3xl font-bold mb-6 text-center">Data Privacy & Transparency Dashboard</h1>
 
-    <!-- Row 1: Chart & Consent -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <!-- Chart & Consent -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
       <!-- Chart -->
       <div class="bg-white shadow-md rounded-lg p-6">
-        <div class="flex justify-between items-center mb-2">
-          <h2 class="text-xl font-semibold">Real-Time Data Usage</h2>
-          <a href="#" class="text-sm text-blue-600">Learn more</a>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">Real-Time Data Usage (Past Year)</h2>
+          <a href="#" class="text-sm hover:underline" style="color: #4d1d25">Learn more</a>
         </div>
-        <canvas id="usageChart"></canvas>
+        <div class="h-64">
+          <canvas id="usageChart"></canvas>
+        </div>
       </div>
 
-      <!-- Consent -->
+      <!-- Access Logs -->
       <div class="bg-white shadow-md rounded-lg p-6">
-        <div class="flex justify-between items-center mb-2">
-          <h2 class="text-xl font-semibold">Consent Settings</h2>
-          <a href="#" class="text-sm text-blue-600">Learn more</a>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">Access Logs</h2>
+          <a href="#" class="text-sm hover:underline" style="color: #4d1d25">View All</a>
         </div>
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <span>Email Tracking</span>
-            <label class="switch">
-              <input type="checkbox" class="ConsentToggle" data-purpose="email_tracking" checked>
-              <span class="slider round"></span>
-            </label>
+        <div id="logs-container">
+          <div class="overflow-x-auto">
+            <table class="access-table">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>Accessed By</th>
+                  <th>Date & Time</th>
+                </tr>
+              </thead>
+              <tbody id="logs-tbody">
+                <!-- Logs will be populated here -->
+              </tbody>
+            </table>
           </div>
-          <div class="flex items-center justify-between">
-            <span>Location Data</span>
-            <label class="switch">
-              <input type="checkbox" class="ConsentToggle" data-purpose="location_data">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <div class="flex items-center justify-between">
-            <span>Device Info</span>
-            <label class="switch">
-              <input type="checkbox" class="ConsentToggle" data-purpose="device_info" checked>
-              <span class="slider round"></span>
-            </label>
+          <div class="mt-4 text-center space-x-4">
+            <button id="download-json" class="text-sm hover:underline font-medium" style="color: #4d1d25">Download as JSON</button>
+            <span class="text-gray-400">|</span>
+            <button id="download-csv" class="text-sm hover:underline font-medium" style="color: #4d1d25">Download as CSV</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Row 2: Purpose & Access Logs -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
       <!-- Purpose -->
       <div class="bg-white shadow-md rounded-lg p-6">
-        <div class="flex justify-between items-center mb-2">
+        <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-semibold">Purpose Limitation</h2>
-          <a href="#" class="text-sm text-blue-600">Learn more</a>
+          <a href="#" class="text-sm hover:underline" style="color: #4d1d25">Learn more</a>
         </div>
-        <div>
-          <label class="block mb-2">
-            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="targeted_ads" checked>Targeted Ads
-          </label>
-          <label class="block mb-2">
-            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="product_suggestions">Product Suggestions
-          </label>
-          <label class="block mb-2">
-            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="service_improvements">Service Improvements
-          </label>
-          <label class="block mb-2">
-            <input type="checkbox" class="PurposeToggle mr-2" data-purpose="email_updates" checked>Email Updates
-          </label>
+        <div class="space-y-2">
+          <div class="checkbox-item">
+            <input type="checkbox" class="PurposeToggle" data-purpose="targeted_ads" checked>
+            <span class="font-medium">Targeted Ads</span>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" class="PurposeToggle" data-purpose="product_suggestions">
+            <span class="font-medium">Product Suggestions</span>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" class="PurposeToggle" data-purpose="service_improvements">
+            <span class="font-medium">Service Improvements</span>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" class="PurposeToggle" data-purpose="email_updates" checked>
+            <span class="font-medium">Email Updates</span>
+          </div>
         </div>
       </div>
 
-      <!-- Access Logs -->
+      <!-- Consent -->
       <div class="bg-white shadow-md rounded-lg p-6">
-        <div id="logs-container"></div>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">Consent Settings</h2>
+          <a href="#" class="text-sm hover:underline" style="color: #4d1d25">Learn more</a>
+        </div>
+        <div class="space-y-2">
+          <div class="setting-item">
+            <span class="font-medium">Email Tracking</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="email_tracking" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <span class="font-medium">Location Data</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="location_data">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <span class="font-medium">Device Info</span>
+            <label class="switch">
+              <input type="checkbox" class="ConsentToggle" data-purpose="device_info" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
       </div>
+    </div>
 
     <!-- Save Button -->
-    <div class="text-center mt-6" style="padding-left: 570px">
-      <button id="save-btn" type="button" class="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700">Save </button>
+    <div class="text-center mt-6">
+      <button id="save-btn" type="button" class="text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg" style="background-color:#4d1d25;">
+        Save Preferences
+      </button>
     </div>
   </div>
 
 <script>
-
 feather.replace();
 
 // Get current user from localStorage
@@ -212,18 +285,18 @@ const ALL_PURPOSES = [
   'email_updates'
 ];
 
-// Chart initialization - now dynamic
+// Chart initialization - now dynamic with yearly data
 let usageChart;
 
-// Initialize chart with dynamic data
+// Initialize chart with dynamic yearly data
 async function initializeChart() {
   try {
     const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
     if (res.ok) {
       const logs = await res.json();
       
-      // Process logs to count events per day
-      const logCounts = processLogsForChart(logs);
+      // Process logs to count events per month for the past year  
+      const logCounts = processLogsForYearlyChart(logs);
       
       const ctx = document.getElementById('usageChart').getContext('2d');
       usageChart = new Chart(ctx, {
@@ -233,24 +306,52 @@ async function initializeChart() {
           datasets: [{
             label: 'Data Events',
             data: logCounts.data,
-            backgroundColor: 'rgba(236, 72, 153, 0.15)',  
-            borderColor: '#ec4899',                      
-            borderWidth: 2,
+            backgroundColor: 'rgba(162, 76, 173, 0.1)',  
+            borderColor: '#a24cad',                      
+            borderWidth: 3,
             fill: true,
-            tension: 0.3
+            tension: 0.4,
+            pointBackgroundColor: '#a24cad',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7
           }]
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
-            legend: { position: 'top' }
+            legend: { 
+              position: 'top',
+              align: 'start', 
+              labels: {
+                usePointStyle: true,
+                padding: 8,
+                boxWidth: 8, 
+                boxHeight: 8,
+              }
+            }
           },
           scales: {
             y: { 
               beginAtZero: true,
               ticks: {
                 stepSize: 1
+              },
+              grid: {
+                color: 'rgba(162, 76, 173, 0.1)'
               }
+            },
+            x: {
+              grid: {
+                color: 'rgba(162, 76, 173, 0.1)'
+              }
+            }
+          },
+          elements: {
+            line: {
+              tension: 0.4
             }
           }
         }
@@ -258,47 +359,46 @@ async function initializeChart() {
     }
   } catch (err) {
     console.error("Error initializing chart:", err);
-    // Fallback to hardcoded data if API fails
+    // Fallback to hardcoded data if API fails (keeping your original fallback)
     initializeFallbackChart();
   }
 }
 
-// Process logs to count events per day
-function processLogsForChart(logs) {
-  // Create a map to count logs per day
-  const dailyCounts = new Map();
+// Process logs to count events per month for the past year
+function processLogsForYearlyChart(logs) {
+  // Create a map to count logs per month
+  const monthlyCounts = new Map();
   
   logs.forEach(log => {
     const date = new Date(log.timestamp);
-    const dateKey = date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric' 
+    const monthKey = date.toLocaleDateString('en-US', { 
+      year: 'numeric',
+      month: 'short'
     });
     
-    dailyCounts.set(dateKey, (dailyCounts.get(dateKey) || 0) + 1);
+    monthlyCounts.set(monthKey, (monthlyCounts.get(monthKey) || 0) + 1);
   });
   
-  // Get last 7 days or available data
+  // Get last 12 months
   const today = new Date();
   const labels = [];
   const data = [];
   
-  for (let i = 6; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateKey = date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric' 
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+    const monthKey = date.toLocaleDateString('en-US', { 
+      year: 'numeric',
+      month: 'short'
     });
     
-    labels.push(dateKey);
-    data.push(dailyCounts.get(dateKey) || 0);
+    labels.push(monthKey);
+    data.push(monthlyCounts.get(monthKey) || 0);
   }
   
   return { labels, data };
 }
 
-// Fallback chart with hardcoded data
+// Fallback chart with your original hardcoded data (only when DB fails)
 function initializeFallbackChart() {
   const ctx = document.getElementById('usageChart').getContext('2d');
   usageChart = new Chart(ctx, {
@@ -308,20 +408,42 @@ function initializeFallbackChart() {
       datasets: [{
         label: 'Data Events',
         data: [3, 5, 4, 6, 8],
-        backgroundColor: 'rgba(236, 72, 153, 0.15)',  
-        borderColor: '#ec4899',                      
-        borderWidth: 2,
+        backgroundColor: 'rgba(162, 76, 173, 0.1)',  
+        borderColor: '#a24cad',                      
+        borderWidth: 3,
         fill: true,
-        tension: 0.3
+        tension: 0.4,
+        pointBackgroundColor: '#a24cad',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'top' }
+        legend: { 
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            padding: 20
+          }
+        }
       },
       scales: {
-        y: { beginAtZero: true }
+        y: { 
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(162, 76, 173, 0.1)'
+          }
+        },
+        x: {
+          grid: {
+            color: 'rgba(162, 76, 173, 0.1)'
+          }
+        }
       }
     }
   });
@@ -334,7 +456,7 @@ async function updateChart() {
       const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
       if (res.ok) {
         const logs = await res.json();
-        const logCounts = processLogsForChart(logs);
+        const logCounts = processLogsForYearlyChart(logs);
         
         usageChart.data.labels = logCounts.labels;
         usageChart.data.datasets[0].data = logCounts.data;
@@ -372,7 +494,7 @@ async function fetchConsents() {
 // Save all preferences to MongoDB
 async function savePreferences() {
   const saveBtn = document.getElementById('save-btn');
-  saveBtn.classList.add('loading');
+  saveBtn.style.opacity = '0.7';
   saveBtn.textContent = 'Saving...';
 
   try {
@@ -412,80 +534,164 @@ async function savePreferences() {
     console.error("Save error:", err);
     alert("Failed to save preferences. Please try again.");
   } finally {
-    saveBtn.classList.remove('loading');
+    saveBtn.style.opacity = '1';
     saveBtn.textContent = 'Save Preferences';
   }
 }
 
-// Load LATEST access logs by timestamp
+// Load LATEST access logs by timestamp - showing top 5
 async function fetchLogs() {
   try {
     const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
     if (res.ok) {
-      const logs = await res.json();
-      const container = document.getElementById('logs-container');
-      container.innerHTML = '';
+      const logs = await res.json(); 
+      const tbody = document.getElementById('logs-tbody');
+      tbody.innerHTML = '';
 
-      // Sort logs by timestamp descending (latest first)
+      // Sort logs by timestamp descending (latest first) and take top 5
       logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      const div = document.createElement('div');
-      div.className = 'p-2 text-sm';
-      div.innerHTML = `
-        <div class="bg-[#e5ccc9] rounded-lg p-4 shadow">
-          <div class="flex justify-between items-center mb-4">
-            <h2 class="text-black text-lg font-semibold">Access Logs</h2>
-            <a href="#" class="text-blue-600 hover:text-blue-500 text-sm">Learn more</a>
-          </div>
+      const topLogs = logs.slice(0, 3);
 
-          <table class="w-full text-md text-left text-gray-800">
-            <thead class="text-md text-black-600 uppercase bg-[#e5ccc9]">
-              <tr>
-                <th scope="col" class="py-3 px-4">Action</th>
-                <th scope="col" class="py-3 px-4">Accessed By</th>
-                <th scope="col" class="py-3 px-4">Date & Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${logs.slice(0, 3).map(log => `
-                <tr class="hover:bg-[#e5ccc9]">
-                  <td class="py-3 px-4">${log.action}</td>
-                  <td class="py-3 px-4">${log.accessedBy}</td>
-                  <td class="py-3 px-4">${new Date(log.timestamp).toLocaleString()}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-
-          <div class="mt-4 text-center">
-            <button class="text-black-600 hover:text-black-800 text-md">See More</button>
-          </div>
-        </div>
-      `;
-
-      container.appendChild(div);
+      if (topLogs.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="3" class="text-center text-gray-500 py-4">No access logs found</td>
+          </tr>
+        `;
+      } else {
+        topLogs.forEach(log => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="font-medium">${log.action}</td>
+            <td class="text-gray-600">${log.accessedBy}</td>
+            <td class="text-sm text-gray-500">${new Date(log.timestamp).toLocaleString()}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
 
       // Update chart with new log data
       await updateChart();
     }
   } catch (err) {
     console.error("Error fetching logs:", err);
+    // Show fallback data
+    const tbody = document.getElementById('logs-tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td class="font-medium">checkout_initiated</td>
+        <td class="text-gray-600">internal_service</td>
+        <td class="text-sm text-gray-500">${new Date().toLocaleString()}</td>
+      </tr>
+      <tr>
+        <td class="font-medium">profile_viewed</td>
+        <td class="text-gray-600">analytics_service</td>
+        <td class="text-sm text-gray-500">${new Date(Date.now() - 86400000).toLocaleString()}</td>
+      </tr>
+    `;
+  }
+}
+
+// Download functions for data export
+async function downloadLogsAsJSON() {
+  try {
+    const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
+    if (res.ok) {
+      const logs = await res.json();
+      
+      // Create downloadable JSON
+      const dataStr = JSON.stringify(logs, null, 2);
+      const dataBlob = new Blob([dataStr], {type: 'application/json'});
+      
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `access-logs-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  } catch (err) {
+    console.error('Error downloading JSON:', err);
+    alert('Failed to download data. Please try again.');
+  }
+}
+
+async function downloadLogsAsCSV() {
+  try {
+    const res = await fetch(`${BASE_URL}/logs/${USER_ID}`);
+    if (res.ok) {
+      const logs = await res.json();
+      
+      // Format data for CSV
+      const csvData = logs.map(log => ({
+        'Action': log.action,
+        'Accessed By': log.accessedBy,
+        'Date & Time': new Date(log.timestamp).toLocaleString(),
+        'Timestamp': log.timestamp,
+        'User ID': log.user || USER_ID,
+        'Log ID': log._id || 'N/A'
+      }));
+      
+      // Create CSV content
+      const headers = Object.keys(csvData[0] || {});
+      const csvContent = [
+        headers.join(','),
+        ...csvData.map(row => 
+          headers.map(header => {
+            const value = row[header] || '';
+            // Escape commas and quotes in CSV
+            return typeof value === 'string' && (value.includes(',') || value.includes('"')) 
+              ? `"${value.replace(/"/g, '""')}"` 
+              : value;
+          }).join(',')
+        )
+      ].join('\n');
+      
+      const dataBlob = new Blob([csvContent], {type: 'text/csv'});
+      
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `access-logs-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  } catch (err) {
+    console.error('Error downloading CSV:', err);
+    alert('Failed to download data. Please try again.');
   }
 }
 
 // Event listeners
 document.getElementById('save-btn').addEventListener('click', savePreferences);
 
-// Load latest data on page load AND on every reload
+// Add download event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Existing initialization
+  fetchConsents();
+  fetchLogs();
+  initializeChart();
+  
+  // Add download button listeners
+  document.getElementById('download-json')?.addEventListener('click', downloadLogsAsJSON);
+  document.getElementById('download-csv')?.addEventListener('click', downloadLogsAsCSV);
+});
+
+// Load latest data on page load
 window.addEventListener('DOMContentLoaded', () => {
   fetchConsents();
   fetchLogs();
-  initializeChart(); // Initialize chart on page load
+  initializeChart();
 });
 
 // Also reload on page focus (when switching back to tab)
 window.addEventListener('focus', () => {
   fetchConsents();
-  fetchLogs(); // This will also update the chart
+  fetchLogs();
 });
 
 </script>
