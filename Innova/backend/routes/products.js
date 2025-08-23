@@ -12,7 +12,28 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get one product
+// Handle products.html with query parameter - MUST BE BEFORE /:id route
+router.get('/products.html', async (req, res) => {
+  const { id } = req.query;
+  
+  if (!id) {
+    return res.status(400).json({ error: 'ID parameter required' });
+  }
+  
+  try {
+    const product = await ProductModel.findOne({ id: parseInt(id) });
+    
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get one product by MongoDB _id (URL parameter)
 router.get('/:id', getProduct, (req, res) => {
   res.json(res.product);
 });
@@ -53,7 +74,7 @@ router.delete('/:id', getProduct, async (req, res) => {
   }
 });
 
-// Middleware to get product by ID
+// Middleware to get product by MongoDB _id
 async function getProduct(req, res, next) {
   let product;
   try {

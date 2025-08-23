@@ -16,8 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
-   
-    // Find the latest consent record for this user
+    
     const latestConsent = await Consent.findOne({ user: userId })
       .sort({ timestamp: -1 })
       .populate('user');

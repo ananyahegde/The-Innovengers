@@ -85,6 +85,15 @@ DELETE http://localhost:3000/users/6863f0ea3625a0ad97790fc4
 
 GET http://localhost:3000/products/
 
+
+### 
+
+GET http://localhost:3000/products/686a081ce9a0c26c5333a76d
+
+### 
+
+GET http://localhost:3000/products.html?id=1 
+
 ###
 
 POST http://localhost:3000/products
@@ -177,6 +186,7 @@ Content-Type: application/json
 
 {
   "user": "686626cfa4f0a116b43de625",
+  "product": "507f1f77bcf86cd799439012",
   "action": "viewed_product",
   "dataType": "product_interaction",
   "purpose": "analytics",

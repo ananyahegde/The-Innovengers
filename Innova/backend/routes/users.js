@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const router = express.Router()
-const UserModel = require('../models/user.model') // renamed to UserModel
+const UserModel = require('../models/user.model') 
 
 // Get all users
 router.get('/', async (req, res) => {

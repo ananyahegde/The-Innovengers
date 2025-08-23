@@ -17,7 +17,7 @@ router.get('/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
     
-    // Find all logs for this user, sorted by latest first
+    // Find all logs for this user
     const logs = await Log.find({ user: userId })
       .sort({ timestamp: -1 })   
     res.json(logs);
