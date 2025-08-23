@@ -1,9 +1,22 @@
 
-# The Innovengers – EleganceWear Privacy Dashboard
+# EleganceWear
 
-This repository contains the full-stack web application for **EleganceWear**, an e-commerce platform enhanced with a **Data Privacy & Transparency Dashboard**. This dashboard empowers users to control how their personal data is used while shopping online. The project is deployed using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for the database and [Render](https://render.com/) for hosting both the frontend and backend. <br>
-<br>
+**EleganceWear** is an e-commerce platform enhanced with a **Data Privacy & Transparency Dashboard** which empowers users to control how their personal data is used while shopping online. <br> 
+
 Check out our website here: [visit website](https://the-innovengers-frontend.onrender.com/) <br> 
+
+## ✨ Features
+
+- Smooth website experience with account creation, user authentication, product browsing, cart management, and checkout.
+- Integrated Data Privacy & Transparency Dashboard for real-time data usage visibility.
+- Users can view and control:
+  - Consent Settings (email, location, device info)
+  - Purpose Limitation (ads, personalization)
+  - Access Logs (who accessed data and when)
+  - Real-time Data Usage chart (data events tracked)
+- Responsive frontend built using Tailwind CSS
+- REST API with Express.js and MongoDB
+- Deployed using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for the database and [Render](https://render.com/) for hosting both the frontend and backend.
 
 ## 🚀 Setup Instructions
 
@@ -21,7 +34,7 @@ cd backend
 
 # Initialize project and install dependencies
 npm init -y
-npm install express jsonwebtoken dotenv cors mongoose bcrypt
+npm install express dotenv cors mongoose bcrypt
 npm install --save-dev nodemon
 ```
 
@@ -39,7 +52,6 @@ Create a `.env` file in the `backend/` directory with the following content:
 ```env
 PORT=3000
 MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
 ```
 
 ### 5. Run Backend Server
@@ -49,27 +61,10 @@ JWT_SECRET=your_jwt_secret_key
 npm run devStart
 ```
 
-For the auth server:
-
-```bash
-npm run devStartAuth
-```
-
 ### 6. Run Frontend
 
-Go to `localhost:3000` in your browser.
+Go to `http://localhost:3000` in your browser.
 
-
-## ✨ Features
-
-- Responsive frontend built using Tailwind CSS
-- REST API with Express.js and MongoDB
-- User authentication (Login / Signup)
-- View and control:
-  - Consent Settings (email, location, device info)
-  - Purpose Limitation (ads, personalization)
-  - Access Logs (who accessed data and when)
-- Real-time Data Usage chart (via Chart.js)
 
 ## 📄 License
 
