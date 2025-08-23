@@ -2,9 +2,9 @@ feather.replace();
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const USER_ID = currentUser?.id;
-const BASE_URL = 'http://localhost:3000';
 
-// const BASE_URL = "https://the-innovengers-backend.onrender.com";
+const BASE_URL = "https://the-innovengers-backend.onrender.com";
+// const BASE_URL = 'http://localhost:3000';
 
 const ALL_PURPOSES = [
   'email_tracking',
