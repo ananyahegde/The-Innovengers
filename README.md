@@ -3,7 +3,7 @@
 
 **EleganceWear** is an e-commerce platform enhanced with a **Data Privacy & Transparency Dashboard** which empowers users to control how their personal data is used while shopping online. <br> 
 
-Check out our website here: [visit website](https://the-innovengers-frontend.onrender.com/) <br> 
+Check out our website here: [visit website](https://elegancewear.onrender.com/) <br> 
 
 ## ✨ Features
 
